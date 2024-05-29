@@ -10,6 +10,7 @@ export class AppController {
 
   @Get()
   getHello(): string {
+    console.log(`Hello from server ${this.instanceId}`);
     // Menggunakan variabel lingkungan untuk identifikasi unik
     return `Hello from server ${this.instanceId}`;
   }
