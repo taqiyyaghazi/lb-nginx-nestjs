@@ -7,6 +7,10 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
+# Set environment variables for non-interactive Certbot run
+ENV CERTBOT_EMAIL=taqiyyaghazi@gmail.com
+ENV CERTBOT_DOMAIN=lb.taqiyyaghazi.com
+
 # Generate SSL certificate and configure NGINX non-interactively
 RUN certbot --nginx -d $CERTBOT_DOMAIN --non-interactive --agree-tos -m $CERTBOT_EMAIL && \
     certbot renew --nginx --non-interactive --agree-tos
