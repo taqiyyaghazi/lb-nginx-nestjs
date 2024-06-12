@@ -7,6 +7,6 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-# Generate SSL certificate and configure NGINX
-RUN certbot --nginx -d lb.taqiyyaghazi.com -d www.lb.taqiyyaghazi.com && \
-    certbot renew --nginx
+# Generate SSL certificate and configure NGINX non-interactively
+RUN certbot --nginx -d $CERTBOT_DOMAIN --non-interactive --agree-tos -m $CERTBOT_EMAIL && \
+    certbot renew --nginx --non-interactive --agree-tos
